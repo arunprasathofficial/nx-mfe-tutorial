@@ -353,4 +353,4 @@ With this setup, your organization can embrace a **polyglot micro-frontend archi
 
 ---
 
-> _Final version of this application can be found [here &raquo;]()_
+> _Final version of this application can be found [here &raquo;](https://github.com/arunprasathofficial/nx-mfe-tutorial/tree/final)_
