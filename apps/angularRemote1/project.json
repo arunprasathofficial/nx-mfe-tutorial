@@ -1,30 +1,35 @@
 {
-  "name": "angularRemote",
+  "name": "angularRemote1",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/angularRemote/src",
+  "sourceRoot": "apps/angularRemote1/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/angularRemote",
-        "index": "apps/angularRemote/src/index.html",
-        "main": "apps/angularRemote/src/main.ts",
+        "outputPath": "dist/apps/angularRemote1",
+        "index": "apps/angularRemote1/src/index.html",
+        "main": "apps/angularRemote1/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/angularRemote/tsconfig.app.json",
+        "tsConfig": "apps/angularRemote1/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/angularRemote/public"
+            "input": "apps/angularRemote1/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/src/images",
+            "output": "assets/images"
           }
         ],
-        "styles": ["apps/angularRemote/src/styles.scss"],
+        "styles": ["apps/angularRemote1/src/styles.scss"],
         "customWebpackConfig": {
-          "path": "apps/angularRemote/webpack.config.ts"
+          "path": "apps/angularRemote1/webpack.config.ts"
         }
       },
       "configurations": {
@@ -43,7 +48,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/angularRemote/webpack.prod.config.ts"
+            "path": "apps/angularRemote1/webpack.prod.config.ts"
           }
         },
         "development": {
@@ -66,39 +71,35 @@
       },
       "configurations": {
         "production": {
-          "buildTarget": "angularRemote:build:production"
+          "buildTarget": "angularRemote1:build:production"
         },
         "development": {
-          "buildTarget": "angularRemote:build:development"
+          "buildTarget": "angularRemote1:build:development"
         }
       },
-      "defaultConfiguration": "development",
-      "dependsOn": ["host:serve"]
+      "defaultConfiguration": "development"
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "angularRemote:build"
+        "buildTarget": "angularRemote1:build"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     },
     "serve-static": {
       "continuous": true,
       "executor": "@nx/web:file-server",
       "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "angularRemote:build",
+        "buildTarget": "angularRemote1:build",
         "port": 4201,
         "watch": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "angularRemote:build:development"
+          "buildTarget": "angularRemote1:build:development"
         },
         "production": {
-          "buildTarget": "angularRemote:build:production"
+          "buildTarget": "angularRemote1:build:production"
         }
       }
     }

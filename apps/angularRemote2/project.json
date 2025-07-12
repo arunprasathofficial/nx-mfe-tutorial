@@ -1,25 +1,25 @@
 {
-  "name": "host",
+  "name": "angularRemote2",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/host/src",
+  "sourceRoot": "apps/angularRemote2/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/host",
-        "index": "apps/host/src/index.html",
-        "main": "apps/host/src/main.ts",
+        "outputPath": "dist/apps/angularRemote2",
+        "index": "apps/angularRemote2/src/index.html",
+        "main": "apps/angularRemote2/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/host/tsconfig.app.json",
+        "tsConfig": "apps/angularRemote2/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/host/public"
+            "input": "apps/angularRemote2/public"
           },
           {
             "glob": "**/*",
@@ -27,12 +27,9 @@
             "output": "assets/images"
           }
         ],
-        "styles": ["apps/host/src/styles.scss"],
-        "scripts": [
-          "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-        ],
+        "styles": ["apps/angularRemote2/src/styles.scss"],
         "customWebpackConfig": {
-          "path": "apps/host/webpack.config.ts"
+          "path": "apps/angularRemote2/webpack.config.ts"
         }
       },
       "configurations": {
@@ -51,7 +48,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/host/webpack.prod.config.ts"
+            "path": "apps/angularRemote2/webpack.prod.config.ts"
           }
         },
         "development": {
@@ -67,17 +64,17 @@
     },
     "serve": {
       "continuous": true,
-      "executor": "@nx/angular:module-federation-dev-server",
+      "executor": "@nx/angular:dev-server",
       "options": {
-        "port": 4200,
-        "publicHost": "http://localhost:4200"
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
       },
       "configurations": {
         "production": {
-          "buildTarget": "host:build:production"
+          "buildTarget": "angularRemote2:build:production"
         },
         "development": {
-          "buildTarget": "host:build:development"
+          "buildTarget": "angularRemote2:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -85,19 +82,25 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "host:build"
+        "buildTarget": "angularRemote2:build"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     },
     "serve-static": {
       "continuous": true,
       "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "host:build",
-        "port": 4200,
-        "spa": true
+        "buildTarget": "angularRemote2:build",
+        "port": 4202,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "angularRemote2:build:development"
+        },
+        "production": {
+          "buildTarget": "angularRemote2:build:production"
+        }
       }
     }
   }

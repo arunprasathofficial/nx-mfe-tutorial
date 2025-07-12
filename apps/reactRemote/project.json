@@ -18,7 +18,12 @@
         "tsConfig": "apps/reactRemote/tsconfig.app.json",
         "assets": [
           "apps/reactRemote/src/favicon.ico",
-          "apps/reactRemote/src/assets"
+          "apps/reactRemote/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/src/images",
+            "output": "assets/images"
+          }
         ],
         "styles": ["apps/reactRemote/src/styles.scss"],
         "scripts": [],
@@ -54,7 +59,7 @@
       "options": {
         "buildTarget": "reactRemote:build",
         "hmr": true,
-        "port": 4202
+        "port": 4203
       },
       "configurations": {
         "development": {

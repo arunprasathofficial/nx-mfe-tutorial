@@ -76,6 +76,9 @@
         "style": "scss",
         "linter": "eslint"
       }
+    },
+    "@nx/angular:component": {
+      "style": "scss"
     }
   },
   "plugins": [
@@ -102,6 +105,12 @@
         "typecheckTargetName": "typecheck",
         "buildDepsTargetName": "build-deps",
         "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint"
       }
     }
   ]
